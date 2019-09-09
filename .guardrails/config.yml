@@ -1,0 +1,11 @@
+bundles:
+  - javascript
+  - solidity
+  - general
+report:
+  pullRequest:
+    findings: "onAllFiles"
+    comment: true
+notifications:
+  slack:
+    enabled: false
