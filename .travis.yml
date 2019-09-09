@@ -25,6 +25,6 @@ install:
   - npm install 
 
 script:
-  - truffle develop &
+  - truffle develop
   - truffle test
 
