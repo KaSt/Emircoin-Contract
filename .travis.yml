@@ -19,12 +19,12 @@ addons:
 before_install:
   - export CXX="g++-4.8"
   - npm install -g npm@latest
-  - npm install -g truffle
+  - npm install -g truffle ganache-cli
 
 install:
   - npm install 
 
 script:
-  - truffle develop
+  - ganache-cli -p 9545 &
   - truffle test
 
