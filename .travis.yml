@@ -25,7 +25,7 @@ install:
   - npm install 
 
 before_script:
-  - ganache-cli &
+  - ganache-cli -p 8545 &
   - sleep 5
 
 script:
