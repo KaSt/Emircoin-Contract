@@ -26,5 +26,7 @@ install:
 
 script:
   - ganache-cli -p 9545 &
+  - truffle compile
+  - truffle deploy
   - truffle test
 
