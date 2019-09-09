@@ -25,10 +25,12 @@ install:
   - npm install 
 
 before_script:
-  - ganache-cli > /dev/null &
+  - ganache-cli &
   - sleep 5
 
 script:
+  - truffle compile
+  - truffle migrate
   - truffle test
 
 after_script:
