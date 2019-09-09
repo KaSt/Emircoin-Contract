@@ -1,0 +1,27 @@
+{
+  "name": "emircoin-contract",
+  "version": "0.1.0",
+  "description": "Emircoin investment contract: the Emir is fair",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "coverage": "npm run solidity-coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaSt/Emircoin-Contract.git"
+  },
+  "author": "Ka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaSt/Emircoin-Contract/issues"
+  },
+  "homepage": "https://github.com/KaSt/Emircoin-Contract#readme",
+  "devDependencies": {
+    "coveralls": "^3.0.6",
+    "solidity-coverage": "^0.6.5"
+  }
+}

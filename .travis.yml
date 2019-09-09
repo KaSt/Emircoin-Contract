@@ -24,9 +24,12 @@ before_install:
 install:
   - npm install 
 
+before_script:
+  - testrpc > /dev/null &
+  - sleep 5
+
 script:
-  - ganache-cli -p 9545 &
-  - truffle compile
-  - truffle migrate
   - truffle test
 
+after_script:
+  - npm run coverage && cat coverage/lcov.info | coveralls
