@@ -25,7 +25,7 @@ install:
   - npm install 
 
 before_script:
-  - testrpc > /dev/null &
+  - ganache-cli > /dev/null &
   - sleep 5
 
 script:
