@@ -5,6 +5,8 @@ pragma solidity ^0.5.4;
  * @title ERC20 interface
  * @dev see https://github.com/ethereum/EIPs/issues/20
  */
+
+
 interface IERC20 {
     function transfer(address to, uint256 value) external returns (bool);
     function approve(address spender, uint256 value) external returns (bool);
@@ -195,7 +197,6 @@ contract Emircoin is IERC20 {
         require(msg.data.length == 0, "Not a valid call to the fallback function");
         require(msg.value > 0, "Need Ether");
         _mint(msg.sender, msg.value);
-        
     }
     
     constructor () public {
@@ -311,10 +312,11 @@ contract Emircoin is IERC20 {
      */
     function _mint(address account, uint256 value) validDestination(account) internal {
         require(account != address(0));
+        uint256 tokens = value.mul(rate);
 
-        _totalSupply = _totalSupply.add(value);
-        _balances[account] = _balances[account].add(value);
-        emit Transfer(address(0), account, value);
+        _totalSupply = _totalSupply.add(tokens);
+        _balances[account] = _balances[account].add(tokens);
+        emit Transfer(address(0), account, tokens);
     }
 
     /**
@@ -367,8 +369,12 @@ contract Emircoin is IERC20 {
         return version;
     }
     
-    function setVersion(string memory _version) public ownerOnly {
+    function setVersion(string memory _version) public onlyOwner {
         version = _version;
+    }
+
+    function getName() public pure returns (string memory) {
+        return name;
     }
         
     event Transfer(address indexed _from, address indexed_to, uint256 _value);
@@ -378,16 +384,6 @@ contract Emircoin is IERC20 {
         assert(a == 0 || c / a == b);
         return c;
   }
-  
-    function mint() public payable {
-        require(msg.value > 0,"Not minting 0 tokens");
-        
-        uint256 tokens = msg.value.mul(RATE);
-        _totalSupply = _totalSupply.add(tokens);
-        emit Transfer(address(0), msg.sender, tokens);
-        msg.sender.transfer(tokens);
-    }
-
 }
 
 
